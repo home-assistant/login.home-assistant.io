@@ -2,7 +2,6 @@ dist
 .rpt2_cache
 .DS_Store
 manifest.json
-build
 .vscode/settings.json
 
 # yarn
