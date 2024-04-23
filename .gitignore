@@ -1,0 +1,18 @@
+dist
+.rpt2_cache
+.DS_Store
+manifest.json
+build
+.vscode/settings.json
+
+# yarn
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+/node_modules/
+yarn-error.log
+npm-debug.log

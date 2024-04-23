@@ -1,0 +1,275 @@
+{% comment %}
+<!-- prettier-ignore -->
+{% endcomment %}
+{% capture full_title -%}
+{%- if title -%}
+{{ title }} – Login Home Assistant
+{%- else -%}
+Login Home Assistant
+{%- endif -%}
+{%- endcapture %}
+{% comment %}
+<!-- prettier-unignore -->
+{% endcomment %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ full_title }}</title>
+    <link rel="icon" href="/images/favicon.png" type="image/png" />
+    <meta name="description" content="{{ description }}" />
+    <meta name="viewport" content="width=device-width" />
+    <meta property="og:title" content="{{ full_title }}" />
+    <meta property="og:site_name" content="Login Home Assistant" />
+    <meta
+      property="og:url"
+      content="https://login.home-assistant.io{{ page.url }}"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="{{ description }}" />
+    <meta
+      property="og:image"
+      content="https://login.home-assistant.io/images/social.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@home_assistant" />
+    <meta name="twitter:title" content="{{ full_title }}" />
+    <meta name="twitter:description" content="{{ description }}" />
+    <meta
+      name="twitter:image"
+      content="https://login.home-assistant.io/images/social.png"
+    />
+    <style>
+      html {
+        font-size: 16px;
+        line-height: 1.5em;
+        --ha-card-border-radius: 12px;
+      }
+
+      body {
+        font-family: Roboto, sans-serif;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 400;
+        margin: 0;
+        padding: 0;
+        background-color: #fafafa;
+
+        --md-sys-color-background: #f6f9ff;
+        --md-sys-color-on-background: #171c21;
+        --md-sys-color-surface: #f6f9ff;
+        --md-sys-color-surface-dim: #d6dae1;
+        --md-sys-color-surface-bright: #f6f9ff;
+        --md-sys-color-surface-container-lowest: #ffffff;
+        --md-sys-color-surface-container-low: #f0f4fa;
+        --md-sys-color-surface-container: #eaeef5;
+        --md-sys-color-surface-container-high: #e4e8ef;
+        --md-sys-color-surface-container-highest: #dee3e9;
+        --md-sys-color-on-surface: #171c21;
+        --md-sys-color-surface-variant: #dae4ef;
+        --md-sys-color-on-surface-variant: #3e4851;
+        --md-sys-color-inverse-surface: #2c3136;
+        --md-sys-color-inverse-on-surface: #edf1f8;
+        --md-sys-color-outline: #6e7882;
+        --md-sys-color-outline-variant: #bec8d2;
+        --md-sys-color-shadow: #000000;
+        --md-sys-color-scrim: #000000;
+        --md-sys-color-surface-tint: #006493;
+        --md-sys-color-primary: #03a9f4;
+        --md-sys-color-on-primary: #ffffff;
+        --md-sys-color-primary-container: #32b5ff;
+        --md-sys-color-on-primary-container: #002337;
+        --md-sys-color-inverse-primary: #8dcdff;
+        --md-sys-color-secondary: #3b627f;
+        --md-sys-color-on-secondary: #ffffff;
+        --md-sys-color-secondary-container: #bee1ff;
+        --md-sys-color-on-secondary-container: #1e4863;
+        --md-sys-color-tertiary: #8440a3;
+        --md-sys-color-on-tertiary: #ffffff;
+        --md-sys-color-tertiary-container: #d78ef7;
+        --md-sys-color-on-tertiary-container: #380050;
+        --md-sys-color-error: #ba1a1a;
+        --md-sys-color-on-error: #ffffff;
+        --md-sys-color-error-container: #ffdad6;
+        --md-sys-color-on-error-container: #410002;
+
+        --primary-text-color: #212121;
+        --link-text-color: #0277bd;
+        color: var(--primary-text-color);
+      }
+
+      .layout {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        min-height: 100vh;
+        min-height: var(--vh, 100vh);
+        min-height: stretch;
+      }
+
+      /* Only works in Safari */
+      @supports (-webkit-hyphens: none) {
+        .layout {
+          min-height: -webkit-fill-available;
+        }
+      }
+
+      .spacer {
+        flex: 1;
+      }
+
+      a {
+        color: var(--link-text-color);
+      }
+
+      .footer {
+        text-align: center;
+        font-size: 14px;
+        padding: 16px 16px 15px;
+        color: var(--secondary-text-color);
+      }
+      .footer a {
+        color: var(--secondary-text-color);
+      }
+
+      .ha-card {
+        background: var(
+          --ha-card-background,
+          var(--paper-card-background-color, white)
+        );
+        border-radius: var(--ha-card-border-radius);
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        color: var(--primary-text-color);
+        display: block;
+        transition: all 0.3s ease-out;
+        position: relative;
+
+        margin-top: 50px;
+        width: 100%;
+        max-width: 600px;
+      }
+
+      @media all and (max-width: 500px) {
+        .ha-card {
+          --ha-card-border-radius: 0;
+          margin-top: 0;
+        }
+      }
+
+      h1 {
+        color: var(--ha-card-header-color, --primary-text-color);
+        font-family: var(--ha-card-header-font-family, inherit);
+        font-size: var(--ha-card-header-font-size, 24px);
+        letter-spacing: -0.012em;
+        line-height: 32px;
+        font-weight: 400;
+      }
+
+      .ha-card h1.card-header {
+        margin: 24px 16px 16px;
+        display: block;
+      }
+
+      .ha-card .card-content {
+        padding: 0 16px 16px;
+      }
+
+      .ha-card .card-content p:last-child {
+        margin-bottom: 0;
+      }
+
+      .ha-card .card-content p:first-child {
+        margin-top: 0;
+      }
+
+      .ha-card .card-actions {
+        border-top: 1px solid #e8e8e8;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .highlight {
+        padding: 8px 16px;
+        background-color: #fff59d;
+      }
+      .highlight + .card-content {
+        margin-top: 16px;
+      }
+      @font-face {
+        font-family: "Roboto";
+        src:
+          local("Roboto Regular"),
+          local("Roboto-Regular"),
+          url(/fonts/roboto/Roboto-Regular.woff2) format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+    <script>
+      function check() {
+        "use strict";
+        try {
+          eval("async () => {}");
+          eval("function f(e) { for (let e in {}) e }");
+        } catch (e) {
+          return false;
+        }
+        return true;
+      }
+      supported = check();
+      if (!supported) {
+        alert(
+          "We are sorry, but this browser is not supported. We advise you to upgrade your browser."
+        );
+      }
+      if (
+        window.orientation !== undefined &&
+        !CSS.supports("min-height: stretch") &&
+        !CSS.supports("-webkit-hyphens")
+      ) {
+        let prevClientHeight;
+        const setViewportProperty = (doc) => {
+          const clientHeight = doc.clientHeight;
+          if (clientHeight === prevClientHeight) {
+            return;
+          }
+          requestAnimationFrame(() => {
+            // min 1 to prevent Firefox from removing the address bar
+            doc.style.setProperty("--vh", clientHeight - 1 + "px");
+            prevClientHeight = clientHeight;
+          });
+        };
+        window.addEventListener("resize", () =>
+          setViewportProperty(document.documentElement)
+        );
+        setViewportProperty(document.documentElement);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="layout">
+      {{ content }}
+      <div class="spacer"></div>
+      <div class="footer">
+        <a href="/">Login Home Assistant</a> –
+        <a
+          href="https://github.com/home-assistant/login.home-assistant.io/issues"
+          target="_blank"
+          rel="noopener"
+          >Report bug</a
+        >
+      </div>
+    </div>
+    {% if javascript_source %}{% if is_production %}
+    <script>
+      {% comment %}
+      <!-- prettier-ignore -->
+      {% endcomment %}
+      {{ source[javascript_source] }}
+    </script>
+    {% else %}
+    <script src="/js/{{ javascript_source }}"></script>
+    {% endif %}{% endif %}
+  </body>
+</html>
