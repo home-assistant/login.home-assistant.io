@@ -40,86 +40,96 @@ Login Home Assistant
       content="https://login.home-assistant.io/images/social.png"
     />
     <style>
+      @font-face {
+        font-family: "Roboto";
+        src:
+          local("Roboto Regular"),
+          local("Roboto-Regular"),
+          url(/fonts/roboto/Roboto-Regular.woff2) format("woff2");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
       html {
-        font-size: 16px;
-        line-height: 1.5em;
-        --ha-card-border-radius: 12px;
+        color: #212121;
+        background-color: #fafafa;
       }
 
       body {
-        font-family: Roboto, sans-serif;
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        font-weight: 400;
-        margin: 0;
-        padding: 0;
-        background-color: #fafafa;
-
-        --md-sys-color-background: #f6f9ff;
-        --md-sys-color-on-background: #171c21;
-        --md-sys-color-surface: #f6f9ff;
-        --md-sys-color-surface-dim: #d6dae1;
-        --md-sys-color-surface-bright: #f6f9ff;
-        --md-sys-color-surface-container-lowest: #ffffff;
-        --md-sys-color-surface-container-low: #f0f4fa;
-        --md-sys-color-surface-container: #eaeef5;
-        --md-sys-color-surface-container-high: #e4e8ef;
-        --md-sys-color-surface-container-highest: #dee3e9;
-        --md-sys-color-on-surface: #171c21;
-        --md-sys-color-surface-variant: #dae4ef;
-        --md-sys-color-on-surface-variant: #3e4851;
-        --md-sys-color-inverse-surface: #2c3136;
-        --md-sys-color-inverse-on-surface: #edf1f8;
-        --md-sys-color-outline: #6e7882;
-        --md-sys-color-outline-variant: #bec8d2;
-        --md-sys-color-shadow: #000000;
-        --md-sys-color-scrim: #000000;
-        --md-sys-color-surface-tint: #006493;
-        --md-sys-color-primary: #03a9f4;
-        --md-sys-color-on-primary: #ffffff;
-        --md-sys-color-primary-container: #32b5ff;
-        --md-sys-color-on-primary-container: #002337;
-        --md-sys-color-inverse-primary: #8dcdff;
-        --md-sys-color-secondary: #3b627f;
-        --md-sys-color-on-secondary: #ffffff;
-        --md-sys-color-secondary-container: #bee1ff;
-        --md-sys-color-on-secondary-container: #1e4863;
-        --md-sys-color-tertiary: #8440a3;
-        --md-sys-color-on-tertiary: #ffffff;
-        --md-sys-color-tertiary-container: #d78ef7;
-        --md-sys-color-on-tertiary-container: #380050;
-        --md-sys-color-error: #ba1a1a;
-        --md-sys-color-on-error: #ffffff;
-        --md-sys-color-error-container: #ffdad6;
-        --md-sys-color-on-error-container: #410002;
-
-        --primary-text-color: #212121;
-        --link-text-color: #0277bd;
-        color: var(--primary-text-color);
-      }
-
-      .layout {
+        font-family: Roboto, Helvetica, Arial, sans-serif;
+        font-size: 12px;
+        height: 100vh;
         display: flex;
-        align-items: center;
         flex-direction: column;
-        min-height: 100vh;
-        min-height: var(--vh, 100vh);
-        min-height: stretch;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
       }
 
-      /* Only works in Safari */
-      @supports (-webkit-hyphens: none) {
-        .layout {
-          min-height: -webkit-fill-available;
-        }
+      .header {
+        text-align: center;
+        margin-top: 32px;
+        margin-bottom: 32px;
       }
 
-      .spacer {
-        flex: 1;
+      .content {
+        box-sizing: border-box;
+        padding: 24px;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 560px;
+        background-color: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        text-align: center;
       }
 
-      a {
-        color: var(--link-text-color);
+      .no-break {
+        white-space: nowrap;
+      }
+
+      h1,
+      h2 {
+        margin: 16px 0;
+        font-weight: normal;
+      }
+
+      h1 {
+        font-size: 28px;
+        line-height: 36px;
+      }
+
+      h2 {
+        font-size: 14px;
+        line-height: 20px;
+      }
+
+      .link {
+        display: inline-block;
+        margin-top: 8px;
+        padding: 12px 16px;
+        overflow: hidden;
+        border-radius: 4px;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 12.25px;
+        letter-spacing: 1.09375px;
+        background-color: rgb(3, 169, 244);
+        color: white;
+        transition: background-color 0.3s;
+      }
+
+      .link:hover {
+        background-color: rgba(3, 169, 244, 0.8);
+      }
+
+      .link:focus-visible {
+        background-color: rgba(3, 169, 244, 0.7);
+      }
+
+      .link:active {
+        background-color: rgba(3, 169, 244, 0.6);
       }
 
       .footer {
@@ -130,80 +140,6 @@ Login Home Assistant
       }
       .footer a {
         color: var(--secondary-text-color);
-      }
-
-      .ha-card {
-        background: var(
-          --ha-card-background,
-          var(--paper-card-background-color, white)
-        );
-        border-radius: var(--ha-card-border-radius);
-        border: 1px solid rgba(0, 0, 0, 0.12);
-        color: var(--primary-text-color);
-        display: block;
-        transition: all 0.3s ease-out;
-        position: relative;
-
-        margin-top: 50px;
-        width: 100%;
-        max-width: 600px;
-      }
-
-      @media all and (max-width: 500px) {
-        .ha-card {
-          --ha-card-border-radius: 0;
-          margin-top: 0;
-        }
-      }
-
-      h1 {
-        color: var(--ha-card-header-color, --primary-text-color);
-        font-family: var(--ha-card-header-font-family, inherit);
-        font-size: var(--ha-card-header-font-size, 24px);
-        letter-spacing: -0.012em;
-        line-height: 32px;
-        font-weight: 400;
-      }
-
-      .ha-card h1.card-header {
-        margin: 24px 16px 16px;
-        display: block;
-      }
-
-      .ha-card .card-content {
-        padding: 0 16px 16px;
-      }
-
-      .ha-card .card-content p:last-child {
-        margin-bottom: 0;
-      }
-
-      .ha-card .card-content p:first-child {
-        margin-top: 0;
-      }
-
-      .ha-card .card-actions {
-        border-top: 1px solid #e8e8e8;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .highlight {
-        padding: 8px 16px;
-        background-color: #fff59d;
-      }
-      .highlight + .card-content {
-        margin-top: 16px;
-      }
-      @font-face {
-        font-family: "Roboto";
-        src:
-          local("Roboto Regular"),
-          local("Roboto-Regular"),
-          url(/fonts/roboto/Roboto-Regular.woff2) format("woff2");
-        font-weight: 400;
-        font-style: normal;
-        font-display: swap;
       }
     </style>
     <script>
@@ -248,18 +184,41 @@ Login Home Assistant
     </script>
   </head>
   <body>
-    <div class="layout">
-      {{ content }}
-      <div class="spacer"></div>
-      <div class="footer">
-        <a href="/">Login Home Assistant</a> –
-        <a
-          href="https://github.com/home-assistant/login.home-assistant.io/issues"
-          target="_blank"
-          rel="noopener"
-          >Report bug</a
-        >
-      </div>
+    <div class="header">
+      <svg
+        width="56"
+        height="56"
+        viewbox="0 0 240 240"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M240 224.762c0 8.25-6.75 15-15 15H15c-8.25 0-15-6.75-15-15v-90c0-8.25 4.77-19.769 10.61-25.609l98.78-98.78c5.83-5.83 15.38-5.83 21.21 0l98.79 98.789c5.83 5.83 10.61 17.36 10.61 25.61v90-.01z"
+          fill="#F2F4F9"
+        />
+        <path
+          d="M229.39 109.153l-98.78-98.78c-5.83-5.83-15.38-5.83-21.21 0l-98.79 98.78C4.78 114.983 0 126.512 0 134.762v90c0 8.25 6.75 15 15 15h92.27l-40.63-40.63c-2.09.72-4.32 1.13-6.64 1.13-11.3 0-20.5-9.2-20.5-20.5s9.2-20.5 20.5-20.5 20.5 9.2 20.5 20.5c0 2.33-.41 4.56-1.13 6.65l31.63 31.63v-115.88c-6.8-3.34-11.5-10.32-11.5-18.39 0-11.3 9.2-20.5 20.5-20.5s20.5 9.2 20.5 20.5c0 8.07-4.7 15.05-11.5 18.39v81.27l31.46-31.46c-.62-1.96-.96-4.04-.96-6.2 0-11.3 9.2-20.5 20.5-20.5s20.5 9.2 20.5 20.5-9.2 20.5-20.5 20.5c-2.5 0-4.88-.47-7.09-1.29L129 208.892v30.88h96c8.25 0 15-6.75 15-15v-90c0-8.25-4.77-19.77-10.61-25.61v-.009z"
+          fill="#18BCF2"
+          alt="Home Assistant logo"
+        />
+      </svg>
+    </div>
+    <div class="content">{{ content }}</div>
+    <div class="spacer"></div>
+    <div class="footer">
+      <a
+        href="http://home-assistant.io"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Home Assistant</a
+      >
+      –
+      <a
+        href="https://github.com/home-assistant/login.home-assistant.io/issues"
+        target="_blank"
+        rel="noopener"
+        >Report bug</a
+      >
     </div>
     {% if javascript_source %}{% if is_production %}
     <script>

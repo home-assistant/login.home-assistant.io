@@ -1,21 +1,52 @@
 ---
-layout: base_card_with_hero
+layout: base
 javascript_source: login-index.js
 description: Link to login page of Home Assistant instance.
 ---
 
 <style>
-  .error {
-    color: #db4437;
-    font-weight: bold;
-  }
+    .error {
+      position: relative;
+      padding: 8px;
+      display: flex;
+      color: #db4437;
+      fill: #db4437;
+    }
+    .error::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      opacity: 0.12;
+      pointer-events: none;
+      content: "";
+      border-radius: 4px;
+      background-color: #db4437;
+    }
+    .error-icon {
+      z-index: 1;
+      width: 24px;
+      height: 24px;
+    }
+    .error-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      text-align: var(--float-start);
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      margin-left: 8px;
+      margin-right: 0;
+      margin-inline-start: 8px;
+      margin-inline-end: 0;
+    }
 </style>
 
-<h1 class="card-header">Login to your Home Assistant</h1>
-<div class="card-content">
-  You will be redirected to the login page of your Home Assistant instance.
-
-  <login-index>
-    Loading...
-  </login-index>
-</div>
+<login-index>
+    <h1>Login</h1>
+    <h2 id="loading">
+      You will be forwarded to the login page of your <span class="no-break">Home Assistant</span>.
+    </h2>
+</login-index>
